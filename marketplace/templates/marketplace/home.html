@@ -1,0 +1,280 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Farmer Marketplace</title>
+
+    <link rel="stylesheet"
+          href="{% static 'marketplace/style.css' %}">
+
+    <style>
+        .hero {
+            min-height: 520px;
+            border-radius: 20px;
+            margin: 30px auto;
+            max-width: 1200px;
+            background:
+                linear-gradient(rgba(0, 80, 20, 0.55),
+                                rgba(0, 50, 10, 0.65)),
+                url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 40px;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            background: white;
+            color: #2e7d32;
+            padding: 14px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hero-btn:hover {
+            background: #e8f5e9;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #2e7d32;
+            margin: 45px 0 25px;
+            font-size: 32px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #2e7d32;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            line-height: 1.6;
+        }
+
+        .vegetable-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <h2>🌾 Farmer Marketplace</h2>
+
+        <div>
+            <a href="/">Home</a>
+            <a href="/login/">Login</a>
+            <a href="/farmer-register/">Farmer Register</a>
+            <a href="/customer-register/">Customer Register</a>
+        </div>
+
+    </div>
+
+
+    <!-- HERO SECTION -->
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <h1>🌾 Fresh From Farm</h1>
+
+            <p>
+                Connect farmers directly with customers.
+                Buy fresh farm products and support local farmers.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a class="hero-btn"
+                   href="/customer-register/">
+                    🛒 Shop Now
+                </a>
+
+                <a class="hero-btn"
+                   href="/farmer-register/">
+                    👨‍🌾 Sell Your Products
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FEATURES -->
+
+    <div class="container">
+
+        <h2 class="section-title">
+            🌱 Why Choose Farmer Marketplace?
+        </h2>
+
+        <div class="product-container">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">👨‍🌾</div>
+
+                <h3>Direct From Farmers</h3>
+
+                <p>
+                    Farmers can sell their fresh products
+                    directly to customers.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">🥬</div>
+
+                <h3>Fresh Products</h3>
+
+                <p>
+                    Get fresh vegetables and farm products
+                    directly from the source.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">🛒</div>
+
+                <h3>Easy Shopping</h3>
+
+                <p>
+                    Search products, select quantity
+                    and place your order easily.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT IMAGE SECTION -->
+
+        <h2 class="section-title">
+            🥕 Fresh From Our Farmers
+        </h2>
+
+        <div class="product-container">
+
+            <div class="product-card">
+
+                <img
+                    class="vegetable-image"
+                    src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80"
+                    alt="Fresh vegetables"
+                >
+
+                <h3>🥬 Fresh Vegetables</h3>
+
+                <p>
+                    Fresh and healthy vegetables
+                    directly from farmers.
+                </p>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <img
+                    class="vegetable-image"
+                    src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=800&q=80"
+                    alt="Farm vegetables"
+                >
+
+                <h3>🍅 Farm Fresh Produce</h3>
+
+                <p>
+                    Quality farm products available
+                    for customers.
+                </p>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <img
+                    class="vegetable-image"
+                    src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=800&q=80"
+                    alt="Fresh food"
+                >
+
+                <h3>🌱 Healthy Food</h3>
+
+                <p>
+                    Fresh products for a healthier
+                    lifestyle.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        🌾 Farmer Marketplace | Fresh • Local • Direct
+    </div>
+
+</body>
+</html>
+

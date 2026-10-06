@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+
+    <link rel="stylesheet"
+          href="{% static 'marketplace/style.css' %}">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h2>🌾 Farmer Marketplace</h2>
+
+        <div>
+            <a href="/">Home</a>
+            <a href="/farmer-register/">Farmer Register</a>
+            <a href="/customer-register/">Customer Register</a>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <div class="form-box">
+
+            <h1 class="title">🔐 Login</h1>
+
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+
+            <form action="/login/" method="POST">
+
+                {% csrf_token %}
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <button type="submit">
+                    🔐 Login
+                </button>
+
+            </form>
+
+            <br>
+
+            <p>
+                New Farmer?
+                <a href="/farmer-register/">
+                    Register as Farmer
+                </a>
+            </p>
+
+            <p>
+                New Customer?
+                <a href="/customer-register/">
+                    Register as Customer
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        🌾 Farmer Marketplace
+    </div>
+
+</body>
+</html>

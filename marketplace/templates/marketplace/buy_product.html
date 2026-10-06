@@ -1,0 +1,268 @@
+```html
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Buy Product</title>
+
+    <link rel="stylesheet"
+          href="{% static 'marketplace/style.css' %}">
+
+    <style>
+
+        body {
+            background-color: #9fe0b1 !important;
+        }
+
+        .buy-box {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+        }
+
+        .buy-box h1 {
+            text-align: center;
+            color: #1b5e20;
+            margin-bottom: 30px;
+        }
+
+        .product-info {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .product-info h2 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+
+        .product-info p {
+            font-size: 17px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #b7d8bd;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        select:focus,
+        input:focus {
+            outline: none;
+            border-color: #2e7d32;
+        }
+
+        .buy-btn {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #2e7d32;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .buy-btn:hover {
+            background: #1b5e20;
+        }
+
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #2e7d32;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <div class="navbar">
+
+        <h2>🌾 Farmer Marketplace</h2>
+
+        <div>
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/customer-products/">
+                Products
+            </a>
+
+            <a href="/customer-orders/">
+                My Orders
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- BUY PRODUCT -->
+
+    <div class="buy-box">
+
+        <h1>🛒 Buy Product</h1>
+
+
+        {% if error %}
+
+            <div class="error">
+                {{ error }}
+            </div>
+
+        {% endif %}
+
+
+        <!-- PRODUCT DETAILS -->
+
+        <div class="product-info">
+
+            <h2>
+                🌱 {{ product.product_name }}
+            </h2>
+
+            <p>
+                <strong>Category:</strong>
+                {{ product.category }}
+            </p>
+
+            <p>
+                <strong>Price:</strong>
+                ₹{{ product.price }}
+            </p>
+
+            <p>
+                <strong>Available Quantity:</strong>
+                {{ product.quantity }}
+            </p>
+
+        </div>
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <!-- CUSTOMER -->
+
+            <label>
+                👤 Select Customer
+            </label>
+
+            <select name="customer" required>
+
+                <option value="">
+                    -- Select Customer --
+                </option>
+
+                {% for customer in customers %}
+
+                    <option value="{{ customer.id }}">
+                        {{ customer.name }} - {{ customer.email }}
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+
+            <!-- QUANTITY -->
+
+            <label>
+                📦 Quantity
+            </label>
+
+            <select name="quantity" required>
+
+    <option value="">
+        -- Select Quantity --
+    </option>
+
+    <option value="0.25">250 g</option>
+    <option value="0.5">500 g</option>
+    <option value="0.75">750 g</option>
+    <option value="1">1 kg</option>
+    <option value="1.5">1.5 kg</option>
+    <option value="2">2 kg</option>
+    <option value="2.5">2.5 kg</option>
+    <option value="3">3 kg</option>
+    <option value="5">5 kg</option>
+    <option value="10">10 kg</option>
+
+</select>
+
+
+            <button
+                type="submit"
+                class="buy-btn">
+
+                🛒 Place Order
+
+            </button>
+
+        </form>
+
+
+        <a
+            href="/customer-products/"
+            class="back-btn">
+
+            ⬅ Back to Products
+
+        </a>
+
+    </div>
+
+
+    <div class="footer">
+
+        🌾 Farmer Marketplace
+        | Fresh • Local • Direct
+
+    </div>
+
+
+</body>
+</html>
+```

@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Orders</title>
+
+    <link rel="stylesheet"
+          href="{% static 'marketplace/style.css' %}">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h2>🌾 Farmer Marketplace</h2>
+
+        <div>
+            <a href="/customer-products/">Products</a>
+            <a href="/customer-orders/">My Orders</a>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <h1 class="title">📦 My Orders</h1>
+
+        {% if orders %}
+
+            {% for order in orders %}
+
+                <div class="order-card">
+
+                    <h3>
+                        🛒 {{ order.product.product_name }}
+                    </h3>
+
+                    <p>
+                        <strong>Customer:</strong>
+                        {{ order.customer.name }}
+                    </p>
+
+                    <p>
+                        <strong>Quantity:</strong>
+                        {{ order.quantity }}
+                    </p>
+
+                    <p>
+                        <strong>Total Amount:</strong>
+                        ₹{{ order.total_price }}
+                    </p>
+
+                    <p>
+                        <strong>Order Date:</strong>
+                        {{ order.order_date }}
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="order-card">
+                <p>No orders found.</p>
+            </div>
+
+        {% endif %}
+
+        <br>
+
+        <a class="btn" href="/customer-products/">
+            🛒 Continue Shopping
+        </a>
+
+    </div>
+
+
+    <div class="footer">
+        🌾 Farmer Marketplace
+    </div>
+
+</body>
+</html>

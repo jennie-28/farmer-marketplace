@@ -1,0 +1,116 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Products</title>
+
+    <link rel="stylesheet"
+          href="{% static 'marketplace/style.css' %}">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h2>🌾 Farmer Marketplace</h2>
+
+        <div>
+            <a href="/customer-products/">Products</a>
+            <a href="/customer-orders/">My Orders</a>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <h1 class="title">🛒 Available Products</h1>
+
+
+        <!-- Search -->
+        <div class="search-box">
+
+            <form method="GET">
+
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="Search product..."
+                    value="{{ search }}"
+                >
+
+                <button type="submit">
+                    🔍 Search
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- Products -->
+        <div class="product-container">
+
+            {% for product in products %}
+
+                <div class="product-card">
+
+                    <h3>🍅 {{ product.product_name }}</h3>
+
+                    <p>
+                        <strong>Category:</strong>
+                        {{ product.category }}
+                    </p>
+
+                    <p>
+                        <strong>Price:</strong>
+                        ₹{{ product.price }}
+                    </p>
+
+                    <p>
+                        <strong>Available Quantity:</strong>
+                        {{ product.quantity }}
+                    </p>
+
+                    <p>
+                        <strong>Farmer:</strong>
+                        {{ product.farmer.name }}
+                    </p>
+
+                    <br>
+
+                    {% if product.quantity > 0 %}
+
+                        <a
+                            class="btn"
+                            href="/buy-product/{{ product.id }}/"
+                        >
+                            🛒 Buy
+                        </a>
+
+                    {% else %}
+
+                        <button disabled>
+                            Out of Stock
+                        </button>
+
+                    {% endif %}
+
+                </div>
+
+            {% empty %}
+
+                <p>No products found.</p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        🌾 Farmer Marketplace
+    </div>
+
+</body>
+</html>
